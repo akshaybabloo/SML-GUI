@@ -6,4 +6,4 @@ A GUI to create Spikes Markup Language.
 
 **Screenshot:**
 
-<img src="https://github.com/akshaybabloo/SML-GUI/raw/master/images/gui.JPG" style="max-width=60%">
+<img src="https://github.com/akshaybabloo/SML-GUI/raw/master/images/gui.JPG" width="300">
