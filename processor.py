@@ -2,6 +2,7 @@
 Processes the selected files - Reads the samples and other specified files the converts it into an SML file.
 """
 import logging
+
 logger = logging.getLogger(__name__)
 
 
