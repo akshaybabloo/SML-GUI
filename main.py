@@ -52,7 +52,7 @@ class Ui(QtWidgets.QMainWindow):
 
         """
         folder_location = QtWidgets.QFileDialog.getExistingDirectory(self, "Select Directory")
-        return str(folder_location)
+        return os.path.abspath(folder_location)
 
 
 if __name__ == '__main__':
