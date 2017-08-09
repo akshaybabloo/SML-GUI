@@ -5,7 +5,8 @@ import sys
 import click
 from PyQt5 import uic, QtWidgets, QtGui, QtCore
 
-from utility import select_folder
+from SMLGUI.utility import select_folder
+from SMLGUI import __version__
 
 logger = logging.getLogger(__name__)
 
@@ -17,7 +18,7 @@ class About(QtWidgets.QDialog):
 
     def __init__(self):
         super(About, self).__init__()
-        uic.loadUi('gui' + os.sep + 'about.ui', self)
+        uic.loadUi(os.path.abspath('SMLGUI' + os.sep + 'gui' + os.sep + 'about.ui'), self)
         content = """
         Copyright Akshay Raj Gollahalli. Licensed under MIT. <br><br>
         
@@ -32,12 +33,15 @@ class About(QtWidgets.QDialog):
         """
 
         self.setWindowTitle("About")
-        self.setWindowIcon(QtGui.QIcon('gui' + os.sep + 'assets' + os.sep + 'logo.png'))
+        self.setWindowIcon(
+            QtGui.QIcon(os.path.abspath('SMLGUI' + os.sep + 'gui' + os.sep + 'assets' + os.sep + 'logo.png')))
         self.setWindowModality(QtCore.Qt.ApplicationModal)  # Focus on this window.
 
         self.textBrowser.setHtml(content)
-        spikes_logo = QtGui.QPixmap('gui' + os.sep + 'assets' + os.sep + 'spikes-logo.png')
+        spikes_logo = QtGui.QPixmap(
+            os.path.abspath('SMLGUI' + os.sep + 'gui' + os.sep + 'assets' + os.sep + 'spikes-logo.png'))
         self.logo.setPixmap(spikes_logo.scaled(99, 39, QtCore.Qt.IgnoreAspectRatio, QtCore.Qt.FastTransformation))
+        self.version.setText("Version: " + __version__)
 
         logger.info("About GUI started.")
         self.show()
@@ -50,11 +54,12 @@ class Ui(QtWidgets.QMainWindow):
 
     def __init__(self):
         super(Ui, self).__init__()
-        uic.loadUi('gui' + os.sep + 'main.ui', self)
+        uic.loadUi(os.path.abspath('SMLGUI' + os.sep + 'gui' + os.sep + 'main.ui'), self)
         self.status_message = "Welcome to SML Exporter!"
 
         self.messageBar.showMessage(self.status_message)
-        self.setWindowIcon(QtGui.QIcon('gui' + os.sep + 'assets' + os.sep + 'logo.png'))
+        self.setWindowIcon(
+            QtGui.QIcon(os.path.abspath('SMLGUI' + os.sep + 'gui' + os.sep + 'assets' + os.sep + 'logo.png')))
         self.setFixedSize(self.size())
 
         # Connections and events

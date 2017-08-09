@@ -5,7 +5,7 @@ import logging
 
 from PyQt5 import QtWidgets
 
-from processor import check_files
+from SMLGUI.processor import check_files
 
 logger = logging.getLogger(__name__)
 
