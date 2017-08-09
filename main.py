@@ -4,6 +4,8 @@ import sys
 
 from PyQt5 import uic, QtWidgets, QtGui, QtCore
 
+from utility import select_folder
+
 logging.basicConfig(level=logging.INFO, format='%(asctime)s [%(levelname)s] %(name)s: %(message)s')
 logger = logging.getLogger(__name__)
 
@@ -23,7 +25,7 @@ class Ui(QtWidgets.QMainWindow):
         self.setFixedSize(self.size())
 
         # Connections and events
-        self.load_samples_button.clicked.connect(self.select_folder)
+        self.load_samples_button.clicked.connect(select_folder)
         self.load_samples_button.installEventFilter(self)
 
         logger.info("GUI started")
@@ -40,19 +42,6 @@ class Ui(QtWidgets.QMainWindow):
                 return True
 
         return False
-
-    def select_folder(self):
-        """
-        Open's a QT QFileDialog and returns the path of the folder
-
-        Returns
-        -------
-        folder_location: str
-            A absolute path of the selected folder.
-
-        """
-        folder_location = QtWidgets.QFileDialog.getExistingDirectory(self, "Select Directory")
-        return os.path.abspath(folder_location)
 
 
 if __name__ == '__main__':
