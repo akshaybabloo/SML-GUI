@@ -154,7 +154,7 @@
     <property name="title">
      <string>Help</string>
     </property>
-    <addaction name="actionAbout"/>
+    <addaction name="about_menu"/>
    </widget>
    <addaction name="menuHelp"/>
   </widget>
@@ -167,7 +167,7 @@
    </attribute>
   </widget>
   <widget class="QStatusBar" name="messageBar"/>
-  <action name="actionAbout">
+  <action name="about_menu">
    <property name="text">
     <string>About</string>
    </property>
