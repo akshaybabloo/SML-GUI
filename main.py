@@ -22,7 +22,8 @@ class Ui(QtWidgets.QMainWindow):
         self.setWindowIcon(QtGui.QIcon('gui' + os.sep + 'assets' + os.sep + 'logo.png'))
         self.setFixedSize(self.size())
 
-        # Connections
+        # Connections and events
+        self.load_samples_button.clicked.connect(self.select_folder)
         self.load_samples_button.installEventFilter(self)
 
         logger.info("GUI started")
@@ -39,6 +40,19 @@ class Ui(QtWidgets.QMainWindow):
                 return True
 
         return False
+
+    def select_folder(self):
+        """
+        Open's a QT QFileDialog and returns the path of the folder
+
+        Returns
+        -------
+        folder_location: str
+            A absolute path of the selected folder.
+
+        """
+        folder_location = QtWidgets.QFileDialog.getExistingDirectory(self, "Select Directory")
+        return str(folder_location)
 
 
 if __name__ == '__main__':
