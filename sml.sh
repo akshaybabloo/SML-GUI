@@ -1,2 +1,2 @@
 #!/bin/sh
-python -c "from SMLGUI import main; main.main()"
+python -c "from SMLGUI.main import main; main()"
