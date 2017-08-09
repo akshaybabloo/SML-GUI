@@ -9,5 +9,5 @@ setup(
     license='MIT',
     author='Akshay Raj Gollahalli',
     author_email='akshay@gollahalli.com',
-    description='Data exporter for Spikes Markup Language (SML).'
+    description='Data exporter for Spikes Markup Language (SML).', requires=['click', 'pyqt']
 )
