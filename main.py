@@ -10,6 +10,39 @@ from utility import select_folder
 logger = logging.getLogger(__name__)
 
 
+class About(QtWidgets.QDialog):
+    """
+    Open's ``About`` GUI.
+    """
+
+    def __init__(self):
+        super(About, self).__init__()
+        uic.loadUi('gui' + os.sep + 'about.ui', self)
+        content = """
+        Copyright Akshay Raj Gollahalli. Licensed under MIT. <br><br>
+        
+        Spikes Markup Language (SML) Exporter <br><br>
+        
+        <b>Third party software:</b><br><br>
+        
+        Python<br>
+        Click<br>
+        PyQT5<br>
+        QT
+        """
+
+        self.setWindowTitle("About")
+        self.setWindowIcon(QtGui.QIcon('gui' + os.sep + 'assets' + os.sep + 'logo.png'))
+        self.setWindowModality(QtCore.Qt.ApplicationModal)  # Focus on this window.
+
+        self.textBrowser.setHtml(content)
+        spikes_logo = QtGui.QPixmap('gui' + os.sep + 'assets' + os.sep + 'spikes-logo.png')
+        self.logo.setPixmap(spikes_logo.scaled(99, 39, QtCore.Qt.IgnoreAspectRatio, QtCore.Qt.FastTransformation))
+
+        logger.info("About GUI started.")
+        self.show()
+
+
 class Ui(QtWidgets.QMainWindow):
     """
     Main class that loads and runs the ``main.ui``.
@@ -33,6 +66,11 @@ class Ui(QtWidgets.QMainWindow):
         logger.info("Main GUI started")
         # showing the app gui to user
         self.show()
+
+    @staticmethod
+    def show_about():
+        app = About()
+        app.exec_()
 
     def eventFilter(self, objects, event):
         if objects.objectName() == 'load_samples_button':
