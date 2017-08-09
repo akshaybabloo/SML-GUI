@@ -1,10 +1,9 @@
-from PyQt5 import uic, QtWidgets
-from PyQt5.QtCore import *
-from PyQt5.QtWidgets import *
-import time
-import sys
 import logging
 import os
+import sys
+
+from PyQt5 import uic, QtWidgets, QtGui, QtCore
+
 logging.basicConfig(level=logging.INFO, format='%(asctime)s [%(levelname)s] %(name)s: %(message)s')
 logger = logging.getLogger(__name__)
 
@@ -23,9 +22,23 @@ class Ui(QtWidgets.QMainWindow):
         self.setWindowIcon(QtGui.QIcon('gui' + os.sep + 'assets' + os.sep + 'logo.png'))
         self.setFixedSize(self.size())
 
+        # Connections
+        self.load_samples_button.installEventFilter(self)
+
         logger.info("GUI started")
         # showing the app gui to user
         self.show()
+
+    def eventFilter(self, objects, event):
+        if objects.objectName() == 'load_samples_button':
+            if event.type() == QtCore.QEvent.HoverEnter:
+                self.messageBar.showMessage("Loads all samples starting with sam1_*.csv")
+                return True
+            elif event.type() == QtCore.QEvent.HoverLeave:
+                self.messageBar.showMessage(self.status_message)
+                return True
+
+        return False
 
 
 if __name__ == '__main__':
