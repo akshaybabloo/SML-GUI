@@ -28,7 +28,9 @@ class Ui(QtWidgets.QMainWindow):
         self.load_samples_button.clicked.connect(select_folder)
         self.load_samples_button.installEventFilter(self)
 
-        logger.info("GUI started")
+        self.about_menu.triggered.connect(self.show_about)
+
+        logger.info("Main GUI started")
         # showing the app gui to user
         self.show()
 
