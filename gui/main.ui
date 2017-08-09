@@ -25,9 +25,12 @@
     </property>
     <layout class="QHBoxLayout" name="horizontalLayout">
      <item>
-      <widget class="QPushButton" name="load_samples">
+      <widget class="QPushButton" name="load_samples_button">
        <property name="toolTip">
-        <string extracomment="Loads all samples starting with sam1_*.csv"/>
+        <string comment="test">Loads all samples starting with sam1_*.csv</string>
+       </property>
+       <property name="toolTipDuration">
+        <number>-1</number>
        </property>
        <property name="text">
         <string>Load Samples</string>
@@ -163,7 +166,7 @@
     <bool>true</bool>
    </attribute>
   </widget>
-  <widget class="QStatusBar" name="statusBar"/>
+  <widget class="QStatusBar" name="messageBar"/>
   <action name="actionAbout">
    <property name="text">
     <string>About</string>
