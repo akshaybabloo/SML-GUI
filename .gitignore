@@ -290,3 +290,4 @@ fabric.properties
 # sphinx build folder
 _build
 .tox
+try.py
