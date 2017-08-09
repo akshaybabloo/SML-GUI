@@ -3,7 +3,10 @@ from PyQt5.QtCore import *
 from PyQt5.QtWidgets import *
 import time
 import sys
+import logging
 import os
+logging.basicConfig(level=logging.INFO, format='%(asctime)s [%(levelname)s] %(name)s: %(message)s')
+logger = logging.getLogger(__name__)
 
 
 class Ui(QtWidgets.QMainWindow):
@@ -15,6 +18,7 @@ class Ui(QtWidgets.QMainWindow):
         super(Ui, self).__init__()
         uic.loadUi('gui' + os.sep + 'main.ui', self)
 
+        logger.info("GUI started")
         # showing the app gui to user
         self.show()
 
