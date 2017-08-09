@@ -59,13 +59,15 @@ def main(debug):
         Verbose logging.
     """
     if debug == 1:
-        logging.basicConfig(level=logging.DEBUG, format='%(levelname)s %(asctime)s %(module)s %(process)d %(thread)d: %(message)s')
+        logging.basicConfig(level=logging.DEBUG,
+                            format='%(levelname)s %(asctime)s %(module)s %(process)d %(thread)d: %(message)s')
     else:
         logging.basicConfig(level=logging.INFO, format='%(asctime)s [%(levelname)s] %(name)s: %(message)s')
 
     app = QtWidgets.QApplication(sys.argv)
     window = Ui()
     sys.exit(app.exec_())
+
 
 if __name__ == '__main__':
     main()
