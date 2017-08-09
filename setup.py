@@ -1,18 +1,11 @@
-from warnings import warn
+from setuptools import setup, find_packages  # noqa, analysis:ignore
 
-try:
-    from setuptools import setup, find_packages  # noqa, analysis:ignore
-except ImportError:
-    warn("unable to load setuptools. 'setup.py develop' will not work")
-    pass
-from distutils.core import setup
-
-from SMLGUI import __version__
+from smlgui import __version__
 
 setup(
-    name='SML-GUI',
+    name='smlgui',
     version=__version__,
-    packages=find_packages(exclude=['tests', 'tests.*', 'docs']),
+    packages=find_packages(),
     url='https://github.com/akshaybabloo/SML-GUI',
     license='MIT',
     author='Akshay Raj Gollahalli',
@@ -20,5 +13,6 @@ setup(
     description='Data exporter for Spikes Markup Language (SML).',
     requires=['click', 'pyqt'],
     scripts=['sml.sh', 'sml.cmd'],
-    package_data={'': ['*.ui']}
+    package_data={'smlgui': ['*.ui', '*.png']},
+    include_package_data=True
 )

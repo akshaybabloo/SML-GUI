@@ -5,8 +5,8 @@ import sys
 import click
 from PyQt5 import uic, QtWidgets, QtGui, QtCore
 
-from SMLGUI.utility import select_folder
-from SMLGUI import __version__
+from smlgui.utility import select_folder
+from smlgui import __version__
 
 logger = logging.getLogger(__name__)
 
