@@ -17,6 +17,11 @@ class Ui(QtWidgets.QMainWindow):
     def __init__(self):
         super(Ui, self).__init__()
         uic.loadUi('gui' + os.sep + 'main.ui', self)
+        self.status_message = "Welcome to SML Exporter!"
+
+        self.messageBar.showMessage(self.status_message)
+        self.setWindowIcon(QtGui.QIcon('gui' + os.sep + 'assets' + os.sep + 'logo.png'))
+        self.setFixedSize(self.size())
 
         logger.info("GUI started")
         # showing the app gui to user
