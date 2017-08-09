@@ -46,6 +46,9 @@ class About(QtWidgets.QDialog):
         logger.info("About GUI started.")
         self.show()
 
+    def closeEvent(self, a0: QtGui.QCloseEvent):
+        logger.info("Exiting About.")
+
 
 class Ui(QtWidgets.QMainWindow):
     """
