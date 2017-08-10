@@ -55,6 +55,7 @@ class ImportUi:
     Note yet implemented.
     """
     def __init__(self, parent=None):
+        logger.warning('ImportUi called, this is not yet implemented.')
         QtWidgets.QMessageBox.critical(parent, "Error", "Note yet implemented!")
 
 
@@ -103,7 +104,7 @@ class ExportUi(QtWidgets.QMainWindow):
         return False
 
     def closeEvent(self, a0: QtGui.QCloseEvent):
-        logger.info("Exiting. Bye!")
+        logger.info("Exiting ExportUi")
 
 
 class Home(QtWidgets.QMainWindow):
@@ -131,7 +132,7 @@ class Home(QtWidgets.QMainWindow):
         self.about_menu.triggered.connect(self.show_about)
         self.exit_menu.triggered.connect(self.close)
 
-        logger.info("Main GUI started")
+        logger.info("Home GUI started")
         # showing the app gui to user
         self.show()
 
@@ -159,14 +160,14 @@ class Home(QtWidgets.QMainWindow):
     def eventFilter(self, objects, event):
         if objects.objectName() == 'export_button':
             if event.type() == QtCore.QEvent.HoverEnter:
-                self.messageBar.showMessage("Loads all samples starting with sam1_*.csv")
+                self.messageBar.showMessage("Export all your data to SML file.")
                 return True
             elif event.type() == QtCore.QEvent.HoverLeave:
                 self.messageBar.showMessage(self.status_message)
                 return True
         elif objects.objectName() == 'import_button':
             if event.type() == QtCore.QEvent.HoverEnter:
-                self.messageBar.showMessage("Loads all samples starting with sam1_*.csv")
+                self.messageBar.showMessage("Import SML and export it to CSV, JSON or Text.")
                 return True
             elif event.type() == QtCore.QEvent.HoverLeave:
                 self.messageBar.showMessage(self.status_message)
