@@ -18,7 +18,7 @@ class AboutUi(QtWidgets.QDialog):
 
     def __init__(self):
         super(AboutUi, self).__init__()
-        uic.loadUi(os.path.abspath('SMLGUI' + os.sep + 'gui' + os.sep + 'about.ui'), self)
+        uic.loadUi(os.path.abspath('smlgui' + os.sep + 'gui' + os.sep + 'about.ui'), self)
         content = """
         Copyright Akshay Raj Gollahalli. Licensed under MIT. <br><br>
         
@@ -34,12 +34,12 @@ class AboutUi(QtWidgets.QDialog):
 
         self.setWindowTitle("AboutUi")
         self.setWindowIcon(
-            QtGui.QIcon(os.path.abspath('SMLGUI' + os.sep + 'gui' + os.sep + 'assets' + os.sep + 'logo.png')))
+            QtGui.QIcon(os.getcwd() + os.sep + 'smlgui' + os.sep + 'gui' + os.sep + 'assets' + os.sep + 'logo.png'))
         self.setWindowModality(QtCore.Qt.ApplicationModal)  # Focus on this window.
 
         self.textBrowser.setHtml(content)
         spikes_logo = QtGui.QPixmap(
-            os.path.abspath('SMLGUI' + os.sep + 'gui' + os.sep + 'assets' + os.sep + 'spikes-logo.png'))
+            os.getcwd() + os.sep + 'smlgui' + os.sep + 'gui' + os.sep + 'assets' + os.sep + 'spikes-logo.png')
         self.logo.setPixmap(spikes_logo.scaled(99, 39, QtCore.Qt.IgnoreAspectRatio, QtCore.Qt.FastTransformation))
         self.version.setText("Version: " + __version__)
 
@@ -62,7 +62,7 @@ class Ui(QtWidgets.QMainWindow):
 
         self.messageBar.showMessage(self.status_message)
         self.setWindowIcon(
-            QtGui.QIcon(os.path.abspath('SMLGUI' + os.sep + 'gui' + os.sep + 'assets' + os.sep + 'logo.png')))
+            QtGui.QIcon(os.getcwd() + os.sep + 'smlgui' + os.sep + 'gui' + os.sep + 'assets' + os.sep + 'logo.png'))
         self.setFixedSize(self.size())
 
         # Connections and events
