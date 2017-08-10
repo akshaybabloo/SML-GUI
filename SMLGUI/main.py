@@ -11,13 +11,13 @@ from smlgui import __version__
 logger = logging.getLogger(__name__)
 
 
-class About(QtWidgets.QDialog):
+class AboutUi(QtWidgets.QDialog):
     """
-    Open's ``About`` GUI.
+    Open's ``AboutUi`` GUI.
     """
 
     def __init__(self):
-        super(About, self).__init__()
+        super(AboutUi, self).__init__()
         uic.loadUi(os.path.abspath('SMLGUI' + os.sep + 'gui' + os.sep + 'about.ui'), self)
         content = """
         Copyright Akshay Raj Gollahalli. Licensed under MIT. <br><br>
@@ -32,7 +32,7 @@ class About(QtWidgets.QDialog):
         QT
         """
 
-        self.setWindowTitle("About")
+        self.setWindowTitle("AboutUi")
         self.setWindowIcon(
             QtGui.QIcon(os.path.abspath('SMLGUI' + os.sep + 'gui' + os.sep + 'assets' + os.sep + 'logo.png')))
         self.setWindowModality(QtCore.Qt.ApplicationModal)  # Focus on this window.
@@ -43,11 +43,11 @@ class About(QtWidgets.QDialog):
         self.logo.setPixmap(spikes_logo.scaled(99, 39, QtCore.Qt.IgnoreAspectRatio, QtCore.Qt.FastTransformation))
         self.version.setText("Version: " + __version__)
 
-        logger.info("About GUI started.")
+        logger.info("AboutUi GUI started.")
         self.show()
 
     def closeEvent(self, a0: QtGui.QCloseEvent):
-        logger.info("Exiting About.")
+        logger.info("Exiting AboutUi.")
 
 
 class Ui(QtWidgets.QMainWindow):
@@ -77,7 +77,7 @@ class Ui(QtWidgets.QMainWindow):
 
     @staticmethod
     def show_about():
-        app = About()
+        app = AboutUi()
         app.exec_()
 
     def eventFilter(self, objects, event):
