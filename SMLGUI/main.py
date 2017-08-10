@@ -55,8 +55,8 @@ class ExportUi(QtWidgets.QMainWindow):
     Main class that loads and runs the ``export.ui``.
     """
 
-    def __init__(self):
-        super(ExportUi, self).__init__()
+    def __init__(self, parent=None):
+        super(ExportUi, self).__init__(parent)
         uic.loadUi(os.getcwd() + os.sep + 'smlgui' + os.sep + 'gui' + os.sep + 'export.ui', self)
         self.status_message = "Welcome to SML Maker!"
 
@@ -111,7 +111,7 @@ class Home(QtWidgets.QMainWindow):
         self.setFixedSize(self.size())
 
         # Connections and events
-        self.export_button.clicked.connect(select_folder)
+        self.export_button.clicked.connect(self.show_export_ui)
         self.export_button.installEventFilter(self)
         self.import_button.installEventFilter(self)
 
@@ -123,8 +123,18 @@ class Home(QtWidgets.QMainWindow):
 
     @staticmethod
     def show_about():
+        """
+        Opening ``AboutUi``
+        """
         app = AboutUi()
         app.exec_()
+
+    def show_export_ui(self):
+        """
+        Opening ``ExportUi``
+        """
+        export_ui = ExportUi(self)
+        export_ui.show()
 
     def eventFilter(self, objects, event):
         if objects.objectName() == 'export_button':
