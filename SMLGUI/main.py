@@ -52,12 +52,12 @@ class AboutUi(QtWidgets.QDialog):
 
 class ExportUi(QtWidgets.QMainWindow):
     """
-    Main class that loads and runs the ``main.ui``.
+    Main class that loads and runs the ``export.ui``.
     """
 
     def __init__(self):
         super(ExportUi, self).__init__()
-        uic.loadUi(os.getcwd() + os.sep + 'smlgui' + os.sep + 'gui' + os.sep + 'main.ui', self)
+        uic.loadUi(os.getcwd() + os.sep + 'smlgui' + os.sep + 'gui' + os.sep + 'export.ui', self)
         self.status_message = "Welcome to SML Maker!"
 
         self.messageBar.showMessage(self.status_message)
