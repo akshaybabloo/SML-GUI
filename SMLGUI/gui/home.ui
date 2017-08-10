@@ -61,7 +61,7 @@
      <string>File</string>
     </property>
     <addaction name="separator"/>
-    <addaction name="actionExit"/>
+    <addaction name="exit_menu"/>
    </widget>
    <addaction name="menuFile"/>
    <addaction name="menuHelp"/>
@@ -72,7 +72,7 @@
     <string>About</string>
    </property>
   </action>
-  <action name="actionExit">
+  <action name="exit_menu">
    <property name="text">
     <string>Exit</string>
    </property>

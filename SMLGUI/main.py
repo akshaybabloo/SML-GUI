@@ -129,6 +129,7 @@ class Home(QtWidgets.QMainWindow):
         self.import_button.installEventFilter(self)
 
         self.about_menu.triggered.connect(self.show_about)
+        self.exit_menu.triggered.connect(self.close)
 
         logger.info("Main GUI started")
         # showing the app gui to user
