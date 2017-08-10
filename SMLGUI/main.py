@@ -50,15 +50,15 @@ class AboutUi(QtWidgets.QDialog):
         logger.info("Exiting AboutUi.")
 
 
-class Ui(QtWidgets.QMainWindow):
+class ExportUi(QtWidgets.QMainWindow):
     """
     Main class that loads and runs the ``main.ui``.
     """
 
     def __init__(self):
-        super(Ui, self).__init__()
-        uic.loadUi(os.path.abspath('SMLGUI' + os.sep + 'gui' + os.sep + 'main.ui'), self)
-        self.status_message = "Welcome to SML Exporter!"
+        super(ExportUi, self).__init__()
+        uic.loadUi(os.getcwd() + os.sep + 'smlgui' + os.sep + 'gui' + os.sep + 'main.ui', self)
+        self.status_message = "Welcome to SML Maker!"
 
         self.messageBar.showMessage(self.status_message)
         self.setWindowIcon(
