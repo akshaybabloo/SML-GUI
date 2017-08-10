@@ -95,6 +95,59 @@ class ExportUi(QtWidgets.QMainWindow):
         logger.info("Exiting. Bye!")
 
 
+class Home(QtWidgets.QMainWindow):
+    """
+    Main class that loads and runs the ``main.ui``.
+    """
+
+    def __init__(self):
+        super(Home, self).__init__()
+        uic.loadUi(os.getcwd() + os.sep + 'smlgui' + os.sep + 'gui' + os.sep + 'home.ui', self)
+        self.status_message = "Welcome to SML Maker!"
+
+        self.messageBar.showMessage(self.status_message)
+        self.setWindowIcon(
+            QtGui.QIcon(os.getcwd() + os.sep + 'smlgui' + os.sep + 'gui' + os.sep + 'assets' + os.sep + 'logo.png'))
+        self.setFixedSize(self.size())
+
+        # Connections and events
+        self.export_button.clicked.connect(select_folder)
+        self.export_button.installEventFilter(self)
+        self.import_button.installEventFilter(self)
+
+        self.about_menu.triggered.connect(self.show_about)
+
+        logger.info("Main GUI started")
+        # showing the app gui to user
+        self.show()
+
+    @staticmethod
+    def show_about():
+        app = AboutUi()
+        app.exec_()
+
+    def eventFilter(self, objects, event):
+        if objects.objectName() == 'export_button':
+            if event.type() == QtCore.QEvent.HoverEnter:
+                self.messageBar.showMessage("Loads all samples starting with sam1_*.csv")
+                return True
+            elif event.type() == QtCore.QEvent.HoverLeave:
+                self.messageBar.showMessage(self.status_message)
+                return True
+        elif objects.objectName() == 'import_button':
+            if event.type() == QtCore.QEvent.HoverEnter:
+                self.messageBar.showMessage("Loads all samples starting with sam1_*.csv")
+                return True
+            elif event.type() == QtCore.QEvent.HoverLeave:
+                self.messageBar.showMessage(self.status_message)
+                return True
+
+        return False
+
+    def closeEvent(self, a0: QtGui.QCloseEvent):
+        logger.info("Exiting. Bye!")
+
+
 @click.command()
 @click.option('--debug', default=0, help="Verbose logging. Defaults to 0, add 1 for verbose logging.")
 def main(debug):
@@ -113,7 +166,7 @@ def main(debug):
         logging.basicConfig(level=logging.INFO, format='%(asctime)s [%(levelname)s] %(name)s: %(message)s')
 
     app = QtWidgets.QApplication(sys.argv)
-    window = Ui()
+    window = Home()
     sys.exit(app.exec_())
 
 
