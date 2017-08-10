@@ -50,6 +50,14 @@ class AboutUi(QtWidgets.QDialog):
         logger.info("Exiting AboutUi.")
 
 
+class ImportUi:
+    """
+    Note yet implemented.
+    """
+    def __init__(self, parent=None):
+        QtWidgets.QMessageBox.critical(parent, "Error", "Note yet implemented!")
+
+
 class ExportUi(QtWidgets.QMainWindow):
     """
     Main class that loads and runs the ``export.ui``.
@@ -115,6 +123,8 @@ class Home(QtWidgets.QMainWindow):
 
         # Connections and events
         self.export_button.clicked.connect(self.show_export_ui)
+        self.import_button.clicked.connect(self.show_import_ui)
+
         self.export_button.installEventFilter(self)
         self.import_button.installEventFilter(self)
 
@@ -138,6 +148,12 @@ class Home(QtWidgets.QMainWindow):
         """
         export_ui = ExportUi(self)
         export_ui.show()
+
+    def show_import_ui(self):
+        """
+        Opening ``ImportUi``
+        """
+        export_ui = ImportUi(self)
 
     def eventFilter(self, objects, event):
         if objects.objectName() == 'export_button':
