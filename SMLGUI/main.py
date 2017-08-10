@@ -77,6 +77,9 @@ class ExportUi(QtWidgets.QMainWindow):
 
     @staticmethod
     def show_about():
+        """
+        Opens ``AboutUi``
+        """
         app = AboutUi()
         app.exec_()
 
