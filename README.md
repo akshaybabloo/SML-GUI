@@ -7,9 +7,11 @@ A GUI to create Spikes Markup Language.
 **Screenshot:**
 
 **SML Maker**
+
 <img src="https://github.com/akshaybabloo/SML-GUI/raw/master/images/sml_maker.JPG" width="300">
 
 **SML Exporter**
+
 <img src="https://github.com/akshaybabloo/SML-GUI/raw/master/images/gui.JPG" width="300">
 
 **SML Importer**
