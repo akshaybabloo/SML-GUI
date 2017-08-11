@@ -206,6 +206,8 @@ def main(debug, verbose, version):
 
     app = QtWidgets.QApplication(sys.argv)
     window = Home()
+    f = open(os.getcwd() + os.sep + 'smlgui' + os.sep + 'gui' + os.sep + 'assets' + os.sep + 'style.qss')
+    app.setStyleSheet(f.read())
     sys.exit(app.exec_())
 
 
