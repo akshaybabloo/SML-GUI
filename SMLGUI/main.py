@@ -82,8 +82,6 @@ class ExportUi(QtWidgets.QMainWindow):
         self.about_menu.triggered.connect(self.show_about)
 
         logger.info("Main GUI started")
-        # showing the app gui to user
-        self.show()
 
     @staticmethod
     def show_about():
@@ -133,6 +131,8 @@ class Home(QtWidgets.QMainWindow):
         self.about_menu.triggered.connect(self.show_about)
         self.exit_menu.triggered.connect(self.close)
 
+        self.export_ui = ExportUi()
+
         logger.info("Home GUI started")
         # showing the app gui to user
         self.show()
@@ -149,8 +149,8 @@ class Home(QtWidgets.QMainWindow):
         """
         Opening ``ExportUi``
         """
-        export_ui = ExportUi(self)
-        export_ui.show()
+        self.export_ui.show()
+        self.close()
 
     def show_import_ui(self):
         """
