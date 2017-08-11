@@ -61,6 +61,9 @@
      <string>File</string>
     </property>
     <addaction name="separator"/>
+    <addaction name="export_to_sml_menu"/>
+    <addaction name="import_from_sml_menu"/>
+    <addaction name="separator"/>
     <addaction name="exit_menu"/>
    </widget>
    <addaction name="menuFile"/>
@@ -75,6 +78,16 @@
   <action name="exit_menu">
    <property name="text">
     <string>Exit</string>
+   </property>
+  </action>
+  <action name="export_to_sml_menu">
+   <property name="text">
+    <string>Export to SML</string>
+   </property>
+  </action>
+  <action name="import_from_sml_menu">
+   <property name="text">
+    <string>Import from SML</string>
    </property>
   </action>
  </widget>
