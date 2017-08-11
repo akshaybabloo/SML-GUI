@@ -202,6 +202,7 @@ def main(debug, verbose, version):
         logging.basicConfig(level=logging.INFO, format='%(asctime)s [%(levelname)s] %(name)s: %(message)s')
     if version:
         click.echo("Version " + __version__)
+        sys.exit()
 
     app = QtWidgets.QApplication(sys.argv)
     window = Home()
