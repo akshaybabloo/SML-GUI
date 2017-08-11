@@ -135,11 +135,6 @@
      </item>
     </layout>
    </widget>
-   <zorder>horizontalLayoutWidget</zorder>
-   <zorder>export_sml</zorder>
-   <zorder>verticalLayoutWidget</zorder>
-   <zorder>horizontalLayoutWidget_2</zorder>
-   <zorder>horizontalLayoutWidget_3</zorder>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
@@ -163,7 +158,7 @@
     <enum>TopToolBarArea</enum>
    </attribute>
    <attribute name="toolBarBreak">
-    <bool>true</bool>
+    <bool>false</bool>
    </attribute>
   </widget>
   <widget class="QStatusBar" name="messageBar"/>
