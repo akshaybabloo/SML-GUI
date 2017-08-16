@@ -50,14 +50,23 @@ class AboutUi(QtWidgets.QDialog):
         logger.info("Exiting AboutUi.")
 
 
-class ImportUi:
+class ImportUi(QtWidgets.QMainWindow):
     """
     Note yet implemented.
     """
 
     def __init__(self, parent=None):
-        logger.warning('ImportUi called, this is not yet implemented.')
-        QtWidgets.QMessageBox.critical(parent, "Error", "Note yet implemented!")
+        super(ImportUi, self).__init__(parent)
+
+        uic.loadUi(os.getcwd() + os.sep + 'smlgui' + os.sep + 'gui' + os.sep + 'import.ui', self)
+        self.status_message = "Welcome to SML Exporter!"
+
+        logger.info("Exporter GUI started")
+
+    def closeEvent(self, a0: QtGui.QCloseEvent):
+        logger.info("Exiting ImportUi")
+        home_ui = Home()
+        home_ui.__init__()
 
 
 class ExportUi(QtWidgets.QMainWindow):
@@ -132,6 +141,7 @@ class Home(QtWidgets.QMainWindow):
         self.exit_menu.triggered.connect(self.close)
 
         self.export_ui = ExportUi()
+        self.import_ui = ImportUi()
 
         logger.info("Home GUI started")
         # showing the app gui to user
@@ -156,7 +166,8 @@ class Home(QtWidgets.QMainWindow):
         """
         Opening ``ImportUi``
         """
-        export_ui = ImportUi(self)
+        self.import_ui.show()
+        self.close()
 
     def eventFilter(self, objects, event):
         if objects.objectName() == 'export_button':
