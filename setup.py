@@ -14,5 +14,24 @@ setup(
     requires=['click', 'PyQt5'],
     scripts=['sml.sh', 'sml.cmd'],
     package_data={'smlgui': ['*.ui', '*.png']},
-    include_package_data=True
+    include_package_data=True,
+    classifiers=[
+        'Development Status :: 2 - Pre-Alpha',
+        'Environment :: Console',
+        'Environment :: X11 Applications :: Qt',
+        'Intended Audience :: Developers',
+        'Intended Audience :: Science/Research',
+        'License :: OSI Approved :: MIT License',
+        'Natural Language :: English',
+        'Operating System :: Microsoft',
+        'Operating System :: MacOS',
+        'Operating System :: POSIX',
+        'Programming Language :: Python :: 3 :: Only',
+        'Topic :: Software Development :: Build Tools',
+        'Topic :: System :: Software Distribution',
+        'Topic :: Text Editors :: Integrated Development Environments (IDE)',
+        'Topic :: Scientific/Engineering :: Artificial Intelligence',
+        'Topic :: Scientific/Engineering :: Visualization',
+        'Topic :: Utilities'
+    ]
 )
