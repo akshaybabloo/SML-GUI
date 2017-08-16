@@ -6,7 +6,7 @@ import click
 from PyQt5 import uic, QtWidgets, QtGui, QtCore
 
 from smlgui import __version__
-from smlgui.utility import select_folder
+from smlgui.utility import select_folder, is_windows
 from smlgui.widgets import TabWidget
 
 logger = logging.getLogger(__name__)
@@ -221,6 +221,11 @@ def main(debug, verbose, version):
     elif version:
         click.echo("Version " + __version__)
         sys.exit()
+
+    if is_windows():
+        import ctypes
+        my_app_id = 'gollahalli.sml_gui.' + __version__
+        ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID(my_app_id)
 
     app = QtWidgets.QApplication(sys.argv)
     window = Home()
