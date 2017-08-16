@@ -194,8 +194,8 @@ class Home(QtWidgets.QMainWindow):
 
 
 @click.command()
-@click.option('--debug', default=True, help="Verbose logging. Defaults to 0, add 1 for verbose logging.")
-@click.option('--verbose', help="Verbose logging.")
+@click.option('--debug', is_flag=True, help="Verbose logging. Defaults to 0, add 1 for verbose logging.")
+@click.option('--verbose',is_flag=True, help="Verbose logging.")
 @click.option('--version', '-v', is_flag=True, help="Show the version number.")
 def main(debug, verbose, version):
     """
@@ -209,11 +209,12 @@ def main(debug, verbose, version):
         Verbose logging.
     """
     if verbose:
+        logging.basicConfig(level=logging.INFO, format='%(asctime)s [%(levelname)s] %(name)s: %(message)s')
+
+    elif debug:
         logging.basicConfig(level=logging.DEBUG,
                             format='%(levelname)s %(asctime)s %(module)s %(process)d %(thread)d: %(message)s')
-    if debug:
-        logging.basicConfig(level=logging.INFO, format='%(asctime)s [%(levelname)s] %(name)s: %(message)s')
-    if version:
+    elif version:
         click.echo("Version " + __version__)
         sys.exit()
 
