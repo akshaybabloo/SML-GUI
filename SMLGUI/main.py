@@ -5,8 +5,9 @@ import sys
 import click
 from PyQt5 import uic, QtWidgets, QtGui, QtCore
 
-from smlgui.utility import select_folder
 from smlgui import __version__
+from smlgui.utility import select_folder
+from smlgui.widgets import TabWidget
 
 logger = logging.getLogger(__name__)
 
@@ -61,12 +62,17 @@ class ImportUi(QtWidgets.QMainWindow):
         uic.loadUi(os.getcwd() + os.sep + 'smlgui' + os.sep + 'gui' + os.sep + 'import.ui', self)
         self.status_message = "Welcome to SML Exporter!"
 
+        self.messageBar.showMessage(self.status_message)
+
+        # QtWidgets.QWidget.
+
+        self.table_widget = TabWidget()
+        self.table_layout.addWidget(self.table_widget)
+
         logger.info("Exporter GUI started")
 
     def closeEvent(self, a0: QtGui.QCloseEvent):
         logger.info("Exiting ImportUi")
-        home_ui = Home()
-        home_ui.__init__()
 
 
 class ExportUi(QtWidgets.QMainWindow):
@@ -113,8 +119,6 @@ class ExportUi(QtWidgets.QMainWindow):
 
     def closeEvent(self, a0: QtGui.QCloseEvent):
         logger.info("Exiting ExportUi")
-        home_ui = Home()
-        home_ui.__init__()
 
 
 class Home(QtWidgets.QMainWindow):
@@ -122,8 +126,8 @@ class Home(QtWidgets.QMainWindow):
     Main class that loads and runs the ``main.ui``.
     """
 
-    def __init__(self):
-        super(Home, self).__init__()
+    def __init__(self, parent=None):
+        super(Home, self).__init__(parent)
         uic.loadUi(os.getcwd() + os.sep + 'smlgui' + os.sep + 'gui' + os.sep + 'home.ui', self)
         self.status_message = "Welcome to SML Maker!"
 
