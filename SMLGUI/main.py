@@ -63,6 +63,8 @@ class ImportUi(QtWidgets.QMainWindow):
         self.status_message = "Welcome to SML Exporter!"
 
         self.messageBar.showMessage(self.status_message)
+        self.setWindowIcon(
+            QtGui.QIcon(os.getcwd() + os.sep + 'smlgui' + os.sep + 'gui' + os.sep + 'assets' + os.sep + 'logo.png'))
 
         # QtWidgets.QWidget.
 
