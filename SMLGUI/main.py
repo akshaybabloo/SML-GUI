@@ -113,6 +113,8 @@ class ExportUi(QtWidgets.QMainWindow):
 
     def closeEvent(self, a0: QtGui.QCloseEvent):
         logger.info("Exiting ExportUi")
+        home_ui = Home()
+        home_ui.__init__()
 
 
 class Home(QtWidgets.QMainWindow):
