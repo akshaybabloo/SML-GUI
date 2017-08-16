@@ -66,8 +66,6 @@ class ImportUi(QtWidgets.QMainWindow):
         self.setWindowIcon(
             QtGui.QIcon(os.getcwd() + os.sep + 'smlgui' + os.sep + 'gui' + os.sep + 'assets' + os.sep + 'logo.png'))
 
-        # QtWidgets.QWidget.
-
         self.table_widget = TabWidget()
         self.table_layout.addWidget(self.table_widget)
 
@@ -90,7 +88,6 @@ class ExportUi(QtWidgets.QMainWindow):
         self.messageBar.showMessage(self.status_message)
         self.setWindowIcon(
             QtGui.QIcon(os.getcwd() + os.sep + 'smlgui' + os.sep + 'gui' + os.sep + 'assets' + os.sep + 'logo.png'))
-        self.setFixedSize(self.size())
 
         # Connections and events
         self.load_samples_button.clicked.connect(select_folder)
@@ -136,7 +133,6 @@ class Home(QtWidgets.QMainWindow):
         self.messageBar.showMessage(self.status_message)
         self.setWindowIcon(
             QtGui.QIcon(os.getcwd() + os.sep + 'smlgui' + os.sep + 'gui' + os.sep + 'assets' + os.sep + 'logo.png'))
-        self.setFixedSize(self.size())
 
         # Connections and events
         self.export_button.clicked.connect(self.show_export_ui)
