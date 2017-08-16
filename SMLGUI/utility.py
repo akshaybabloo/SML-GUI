@@ -18,3 +18,5 @@ def select_folder():
     folder_location = QtWidgets.QFileDialog.getExistingDirectory(None, "Select Directory")
 
     check_files(folder_location)
+
+    return folder_location
