@@ -2,6 +2,7 @@
 Utility for pre-processing the file before sending it to ``processor``.
 """
 import logging
+import sys
 
 from PyQt5 import QtWidgets
 
@@ -20,3 +21,48 @@ def select_folder():
     check_files(folder_location)
 
     return folder_location
+
+
+def is_windows():
+    """
+    Check if windows os
+
+    Returns
+    -------
+    bool: bool
+        True or False.
+
+    """
+    if sys.platform == 'win32':
+        return True
+    return False
+
+
+def is_mac():
+    """
+    Check if mac os
+
+    Returns
+    -------
+    bool: bool
+        True or False.
+
+    """
+    if sys.platform == 'darwin':
+        return True
+    return False
+
+
+def is_linux():
+    """
+    Check if linux os
+
+    Returns
+    -------
+    bool: bool
+        True or False.
+
+    """
+    if sys.platform == 'linux':
+        return True
+    return False
