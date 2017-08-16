@@ -13,6 +13,8 @@ class TabWidget(QtWidgets.QTabWidget):
         tablabellist = []
         layoutlist = []
         self.tablelist = []
+        self.setMinimumHeight(150)
+        self.setMinimumWidth(400)
 
         headerlist = ['ID', 'Question', 'Answer 1', 'Answer 2', 'Answer 3', 'Difficulty', 'Statistics', 'Date Added',
                       'Added By', 'Date Modified']
