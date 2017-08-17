@@ -23,14 +23,15 @@ class AboutUi(QtWidgets.QDialog):
         content = """
         Copyright Akshay Raj Gollahalli. Licensed under MIT. <br><br>
         
-        Spikes Markup Language (SML) Exporter <br><br>
+        Spikes Markup Language (SML) Maker <br><br>
         
-        <b>Third party software:</b><br><br>
+        <b>Libraries that made it all possible:</b><br><br>
         
         Python<br>
         Click<br>
         PyQT5<br>
-        QT
+        QT<br>
+        NumPy
         """
 
         self.setWindowTitle("AboutUi")
