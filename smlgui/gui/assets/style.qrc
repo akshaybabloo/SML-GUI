@@ -1,0 +1,9 @@
+<RCC>
+  <qresource prefix="qss_icons">
+    <file>rc/down_arrow.png</file>
+    <file>rc/down_arrow_disabled.png</file>
+  </qresource>
+  <qresource prefix="darkstyle">
+      <file>style.qss</file>
+  </qresource>
+</RCC>
