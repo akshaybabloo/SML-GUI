@@ -247,13 +247,13 @@ def main(debug, version):
 
     if debug:
         logging.basicConfig(level=logging.DEBUG,
-                            format='%(levelname)s %(asctime)s %(module)s %(process)d %(thread)d [%(threadName)s]: %(message)s')
+                            format='%(levelname)s %(asctime)s %(module)s %(process)d %(thread)d [%(threadName)s]: %('
+                                   'message)s')
     elif version:
         click.echo("Version " + __version__)
         sys.exit()
 
     logging.basicConfig(level=logging.INFO, format='%(asctime)s [%(levelname)s] %(name)s: %(message)s')
-
 
     if is_windows():
         import ctypes
