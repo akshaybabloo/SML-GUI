@@ -6,6 +6,9 @@ from PyQt5 import QtWidgets, QtCore
 
 
 class TabWidget(QtWidgets.QTabWidget):
+    """
+    Table widget to populate all the samples.
+    """
     def __init__(self, narray, parent=None):
         super(TabWidget, self).__init__(parent)
 
