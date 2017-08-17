@@ -7,7 +7,7 @@ import numpy as np
 from PyQt5 import uic, QtWidgets, QtGui, QtCore
 
 from smlgui import __version__
-from smlgui.utility import select_folder, is_windows
+from smlgui.utility import select_folder, is_windows, load_stylesheet
 from smlgui.widgets import TabWidget
 
 logger = logging.getLogger(__name__)
@@ -262,8 +262,7 @@ def main(debug, version):
 
     app = QtWidgets.QApplication(sys.argv)
     window = Home()
-    f = open(os.getcwd() + os.sep + 'smlgui' + os.sep + 'gui' + os.sep + 'assets' + os.sep + 'style.qss')
-    app.setStyleSheet(f.read())
+    app.setStyleSheet(load_stylesheet())
     sys.exit(app.exec_())
 
 
