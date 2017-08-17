@@ -38,3 +38,37 @@ class TabWidget(QtWidgets.QTabWidget):
             # layoutlist[i].addWidget(tablabellist[i])
             layoutlist[i].addWidget(self.tablelist[i])
             tablist[i].setLayout(layoutlist[i])
+
+
+class NumpyModel(QtCore.QAbstractTableModel):
+    """
+    Adds 2D numpy array to the ``QTableView``
+    """
+
+    def __init__(self, narray, headers=None, parent=None):
+        QtCore.QAbstractTableModel.__init__(self, parent)
+        self._array = narray
+
+        if headers is not None:
+            self.header_labels = headers
+        else:
+            self.header_labels = [str(i) for i in range(self._array.shape[1])]
+
+    def rowCount(self, parent=None):
+        return self._array.shape[0]
+
+    def columnCount(self, parent=None):
+        return self._array.shape[1]
+
+    def data(self, index, role=QtCore.Qt.DisplayRole):
+        if index.isValid():
+            if role == QtCore.Qt.DisplayRole:
+                row = index.row()
+                col = index.column()
+                return QtCore.QVariant("%.5f" % self._array[row, col])
+        return QtCore.QVariant()
+
+    def headerData(self, section, orientation, role=QtCore.Qt.DisplayRole):
+        if role == QtCore.Qt.DisplayRole and orientation == QtCore.Qt.Horizontal:
+            return self.header_labels[section]
+        return QtCore.QAbstractTableModel.headerData(self, section, orientation, role)
