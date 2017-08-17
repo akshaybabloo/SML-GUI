@@ -64,6 +64,7 @@ class ImportUi(QtWidgets.QMainWindow):
         uic.loadUi(os.getcwd() + os.sep + 'smlgui' + os.sep + 'gui' + os.sep + 'import.ui', self)
         self.status_message = "Welcome to SML Exporter!"
 
+        self.setWindowTitle("SML Exporter")
         self.messageBar.showMessage(self.status_message)
         self.setWindowIcon(
             QtGui.QIcon(os.getcwd() + os.sep + 'smlgui' + os.sep + 'gui' + os.sep + 'assets' + os.sep + 'logo.png'))
@@ -89,6 +90,11 @@ class ImportUi(QtWidgets.QMainWindow):
 
         self.table_layout.addWidget(self.temp_text_table)
         self.stats_layout.addWidget(self.temp_text_stats)
+        self.samples_to_csv.setEnabled(False)
+        self.weights_to_csv.setEnabled(False)
+        self.connections_to_csv.setEnabled(False)
+        self.spikes_to_csv.setEnabled(False)
+        self.encoded_to_csv.setEnabled(False)
 
         # GUI
         self.load_sml_button.clicked.connect(self.load_table)
