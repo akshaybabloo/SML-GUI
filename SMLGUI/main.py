@@ -198,23 +198,20 @@ class Home(QtWidgets.QMainWindow):
 
 @click.command()
 @click.option('--debug', is_flag=True, help="Verbose logging. Defaults to 0, add 1 for verbose logging.")
-@click.option('--verbose',is_flag=True, help="Verbose logging.")
 @click.option('--version', '-v', is_flag=True, help="Show the version number.")
-def main(debug, verbose, version):
+def main(debug, version):
     """
     Runs the main app, if ``--debug=1`` a more verbose logging is shown.
 
     Parameters
     ----------
     version
-    verbose
     debug: int
         Verbose logging.
     """
-    if verbose:
-        logging.basicConfig(level=logging.INFO, format='%(asctime)s [%(levelname)s] %(name)s: %(message)s')
+    logging.basicConfig(level=logging.INFO, format='%(asctime)s [%(levelname)s] %(name)s: %(message)s')
 
-    elif debug:
+    if debug:
         logging.basicConfig(level=logging.DEBUG,
                             format='%(levelname)s %(asctime)s %(module)s %(process)d %(thread)d: %(message)s')
     elif version:
