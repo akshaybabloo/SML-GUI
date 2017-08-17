@@ -1,2 +1,0 @@
-include smlgui/gui/*.ui
-include smlgui/gui/assets/*.png
