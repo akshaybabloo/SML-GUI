@@ -55,16 +55,16 @@ class AboutUi(QtWidgets.QDialog):
 
 class ImportUi(QtWidgets.QMainWindow):
     """
-    Note yet implemented.
+    Imports SML and exports to CSV.
     """
 
     def __init__(self, parent=None):
         super(ImportUi, self).__init__(parent)
 
         uic.loadUi(os.getcwd() + os.sep + 'smlgui' + os.sep + 'gui' + os.sep + 'import.ui', self)
-        self.status_message = "Welcome to SML Exporter!"
+        self.status_message = "Welcome to SML Importer!"
 
-        self.setWindowTitle("SML Exporter")
+        self.setWindowTitle("SML Importer")
         self.messageBar.showMessage(self.status_message)
         self.setWindowIcon(
             QtGui.QIcon(os.getcwd() + os.sep + 'smlgui' + os.sep + 'gui' + os.sep + 'assets' + os.sep + 'logo.png'))
@@ -119,8 +119,9 @@ class ExportUi(QtWidgets.QMainWindow):
     def __init__(self, parent=None):
         super(ExportUi, self).__init__(parent)
         uic.loadUi(os.getcwd() + os.sep + 'smlgui' + os.sep + 'gui' + os.sep + 'export.ui', self)
-        self.status_message = "Welcome to SML Maker!"
+        self.status_message = "Welcome to SML Exporter!"
 
+        self.setWindowTitle("SML Exporter")
         self.messageBar.showMessage(self.status_message)
         self.setWindowIcon(
             QtGui.QIcon(os.getcwd() + os.sep + 'smlgui' + os.sep + 'gui' + os.sep + 'assets' + os.sep + 'logo.png'))
