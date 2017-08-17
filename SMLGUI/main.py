@@ -3,6 +3,7 @@ import os
 import sys
 
 import click
+import numpy as np
 from PyQt5 import uic, QtWidgets, QtGui, QtCore
 
 from smlgui import __version__
@@ -67,13 +68,41 @@ class ImportUi(QtWidgets.QMainWindow):
         self.setWindowIcon(
             QtGui.QIcon(os.getcwd() + os.sep + 'smlgui' + os.sep + 'gui' + os.sep + 'assets' + os.sep + 'logo.png'))
 
-        self.table_widget = TabWidget()
-        self.table_layout.addWidget(self.table_widget)
+        # Text before loading the samples
+        self.temp_text_table = QtWidgets.QLabel()
+        self.temp_text_table.setText("Load SML")
+        self.temp_text_table.setAlignment(QtCore.Qt.AlignHCenter | QtCore.Qt.AlignVCenter)
+        my_font = QtGui.QFont()
+        my_font.setBold(True)
+        my_font.setPixelSize(50)
+        self.temp_text_table.setFont(my_font)
+        self.temp_text_table.setMinimumHeight(150)
+        self.temp_text_table.setMinimumWidth(400)
+
+        # Text before loading the samples
+        self.temp_text_stats = QtWidgets.QLabel()
+        self.temp_text_stats.setText("Load SML")
+        self.temp_text_stats.setAlignment(QtCore.Qt.AlignHCenter | QtCore.Qt.AlignVCenter)
+        self.temp_text_stats.setFont(my_font)
+        self.temp_text_stats.setMinimumHeight(150)
+        self.temp_text_stats.setMinimumWidth(800)
+
+        self.table_layout.addWidget(self.temp_text_table)
+        self.stats_layout.addWidget(self.temp_text_stats)
+
+        # GUI
+        self.load_sml_button.clicked.connect(self.load_table)
 
         logger.info("Exporter GUI started")
 
+    def load_table(self):
+        self.temp_text_table.deleteLater()
+        table_widget = TabWidget(np.random.randn(2, 4, 3))
+        self.table_layout.addWidget(table_widget)
+
     def closeEvent(self, a0: QtGui.QCloseEvent):
         logger.info("Exiting ImportUi")
+        self.setAttribute(QtCore.Qt.WA_DeleteOnClose)
 
 
 class ExportUi(QtWidgets.QMainWindow):
