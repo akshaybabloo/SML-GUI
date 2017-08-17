@@ -12,8 +12,8 @@ A GUI to create Spikes Markup Language.
 
 **SML Exporter**
 
-<img src="https://github.com/akshaybabloo/SML-GUI/raw/master/images/gui.JPG" width="300">
+<img src="https://github.com/akshaybabloo/SML-GUI/raw/master/images/sml_exporter.JPG" width="300">
 
 **SML Importer**
 
-> Note yet implemented. 
+<img src="https://github.com/akshaybabloo/SML-GUI/raw/master/images/sml_importer.JPG" width="300">
