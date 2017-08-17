@@ -49,9 +49,37 @@
             </widget>
            </item>
            <item>
-            <widget class="QPushButton" name="pushButton">
+            <widget class="QPushButton" name="samples_to_csv">
              <property name="text">
-              <string>PushButton</string>
+              <string>Save Samples to CSV</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="encoded_to_csv">
+             <property name="text">
+              <string>Save Encoded Samples to CSV</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="weights_to_csv">
+             <property name="text">
+              <string>Save Weights to CSV</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="connections_to_csv">
+             <property name="text">
+              <string>Save Connections to CSV</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="spikes_to_csv">
+             <property name="text">
+              <string>Save Neuron Spikes to CSV</string>
              </property>
             </widget>
            </item>
