@@ -98,6 +98,7 @@ class ImportUi(QtWidgets.QMainWindow):
 
         # GUI
         self.load_sml_button.clicked.connect(self.load_table)
+        self.about_menu.triggered.connect(self.show_about)
 
         logger.info("Exporter GUI started")
 
@@ -105,6 +106,14 @@ class ImportUi(QtWidgets.QMainWindow):
         self.temp_text_table.deleteLater()
         table_widget = TabWidget(np.random.randn(2, 4, 3))
         self.table_layout.addWidget(table_widget)
+
+    @staticmethod
+    def show_about():
+        """
+        Opening ``AboutUi``
+        """
+        app = AboutUi()
+        app.exec_()
 
     def closeEvent(self, a0: QtGui.QCloseEvent):
         logger.info("Exiting ImportUi")
