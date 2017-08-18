@@ -29,6 +29,9 @@ def is_windows():
     """
     Check if windows os
 
+    >>> print(is_windows())
+    True or False
+
     Returns
     -------
     bool: bool
@@ -44,6 +47,9 @@ def is_mac():
     """
     Check if mac os
 
+    >>> print(is_mac())
+    True or False
+
     Returns
     -------
     bool: bool
@@ -58,6 +64,9 @@ def is_mac():
 def is_linux():
     """
     Check if linux os
+
+    >>> print(is_linux())
+    True or False
 
     Returns
     -------
