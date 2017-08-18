@@ -277,7 +277,3 @@ def main(debug, version):
     window = Home()
     app.setStyleSheet(load_stylesheet())
     sys.exit(app.exec_())
-
-
-if __name__ == '__main__':
-    main()
