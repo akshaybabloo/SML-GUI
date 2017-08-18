@@ -74,18 +74,16 @@ def load_stylesheet():
     Load's the ``style.qss``.
     """
     # Smart import of the rc file
+    import smlgui.gui.assets.style_rc
 
-    # Load the stylesheet content from resources
-    from PyQt5.QtCore import QFile, QTextStream
-
-    f = QFile(":darkstyle/style.qss")
+    f = QtCore.QFile(":darkstyle/style.qss")
     if not f.exists():
         logger.error("Unable to load stylesheet, file not found in "
                      "resources")
         return ""
     else:
-        f.open(QFile.ReadOnly | QFile.Text)
-        ts = QTextStream(f)
+        f.open(QtCore.QFile.ReadOnly | QtCore.QFile.Text)
+        ts = QtCore.QTextStream(f)
         stylesheet = ts.readAll()
         if platform.system().lower() == 'darwin':  # see issue #12 on github
             mac_fix = '''
