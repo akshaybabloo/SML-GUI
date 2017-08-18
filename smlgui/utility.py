@@ -98,7 +98,7 @@ def load_stylesheet():
         return stylesheet
 
 
-def waiting_effects(func):
+def loading_effects_decorator(func):
     """
     Decorator for creating an loading cursor.
 
