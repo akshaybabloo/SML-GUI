@@ -11,7 +11,7 @@ setup(
     author='Akshay Raj Gollahalli',
     author_email='akshay@gollahalli.com',
     description='Data exporter for Spikes Markup Language (SML).',
-    requires=['click', 'PyQt5'],
+    requires=['click', 'pyqt>5.6', 'numpy>=1.10'],
     scripts=['sml.sh', 'sml.cmd'],
     package_data={'smlgui': ['*.ui', '*.png']},
     include_package_data=True,
