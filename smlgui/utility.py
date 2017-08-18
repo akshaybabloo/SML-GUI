@@ -4,6 +4,7 @@ Utility for pre-processing the file before sending it to ``processor``.
 import logging
 import platform
 import sys
+from contextlib import contextmanager
 
 from PyQt5 import QtWidgets, QtCore, QtGui
 
@@ -102,6 +103,11 @@ def loading_effects_decorator(func):
     """
     Decorator for creating an loading cursor.
 
+    >>> @loading_effects_decorator
+    >>> def do_lengthy_process():
+    >>>     # DO something
+    >>>     pass
+
     Parameters
     ----------
     func: function
@@ -123,3 +129,19 @@ def loading_effects_decorator(func):
             QtWidgets.QApplication.restoreOverrideCursor()
 
     return new_function
+
+
+@contextmanager
+def loading_effects_context():
+    """
+    Using context manager to create loading cursor for snippets of code.
+
+    >>> with loading_effects_context():
+    >>>     # Do something
+    >>>     pass
+    """
+    try:
+        QtWidgets.QApplication.setOverrideCursor(QtGui.QCursor(QtCore.Qt.WaitCursor))
+        yield
+    finally:
+        QtWidgets.QApplication.restoreOverrideCursor()
