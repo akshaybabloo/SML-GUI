@@ -2,10 +2,10 @@
 Utility for pre-processing the file before sending it to ``processor``.
 """
 import logging
-import sys
 import platform
+import sys
 
-from PyQt5 import QtWidgets
+from PyQt5 import QtWidgets, QtCore, QtGui
 
 from smlgui.processor import check_files
 
@@ -74,7 +74,6 @@ def load_stylesheet():
     Load's the ``style.qss``.
     """
     # Smart import of the rc file
-    import smlgui.gui.assets.style_rc
 
     # Load the stylesheet content from resources
     from PyQt5.QtCore import QFile, QTextStream
@@ -82,7 +81,7 @@ def load_stylesheet():
     f = QFile(":darkstyle/style.qss")
     if not f.exists():
         logger.error("Unable to load stylesheet, file not found in "
-                        "resources")
+                     "resources")
         return ""
     else:
         f.open(QFile.ReadOnly | QFile.Text)
@@ -100,5 +99,29 @@ def load_stylesheet():
             stylesheet += mac_fix
         return stylesheet
 
-if __name__ == '__main__':
-    print(load_stylesheet())
+
+def waiting_effects(func):
+    """
+    Decorator for creating an loading cursor.
+
+    Parameters
+    ----------
+    func: function
+
+    Returns
+    -------
+    new_function: object
+
+    """
+
+    def new_function(self):
+        QtWidgets.QApplication.setOverrideCursor(QtGui.QCursor(QtCore.Qt.WaitCursor))
+        try:
+            func(self)
+        except Exception as e:
+            raise e
+            print("Error {}".format(e.args[0]))
+        finally:
+            QtWidgets.QApplication.restoreOverrideCursor()
+
+    return new_function

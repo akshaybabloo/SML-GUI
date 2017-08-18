@@ -7,7 +7,7 @@ import numpy as np
 from PyQt5 import uic, QtWidgets, QtGui, QtCore
 
 from smlgui import __version__
-from smlgui.utility import select_folder, is_windows, load_stylesheet
+from smlgui.utility import select_folder, is_windows, load_stylesheet, waiting_effects
 from smlgui.widgets import TabWidget
 
 logger = logging.getLogger(__name__)
@@ -102,9 +102,13 @@ class ImportUi(QtWidgets.QMainWindow):
 
         logger.info("Exporter GUI started")
 
+    @waiting_effects
     def load_table(self):
+        """
+        Populates the ``samples`` table.
+        """
         self.temp_text_table.deleteLater()
-        table_widget = TabWidget(np.random.randn(2, 4, 3))
+        table_widget = TabWidget(np.random.randn(60, 128, 14))
         self.table_layout.addWidget(table_widget)
 
     @staticmethod
