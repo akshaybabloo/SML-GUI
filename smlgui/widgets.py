@@ -46,7 +46,7 @@ class NumpyModel(QtCore.QAbstractTableModel):
         if headers is not None:
             self.header_labels = headers
         else:
-            self.header_labels = [str(i) for i in range(self._array.shape[1])]
+            self.header_labels = [str(i+1) for i in range(self._array.shape[1])]
 
     def rowCount(self, parent=None):
         return self._array.shape[0]
