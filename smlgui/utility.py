@@ -3,6 +3,7 @@ Utility for pre-processing the file before sending it to ``processor``.
 """
 from __future__ import print_function
 
+import configparser
 import csv
 import logging
 import os
@@ -392,6 +393,50 @@ def loading_effects_context():
         QtWidgets.QApplication.restoreOverrideCursor()
 
 
+def get_sml_conf():
+    """
+    Reads configuration file ``sml.conf`` if exists, else it creates one.
+
+    Returns
+    -------
+    config: object
+        ConfigParser object.
+    """
+    sml_conf_file = os.path.expanduser('~' + os.sep + 'sml.conf')
+
+    config = configparser.ConfigParser()
+
+    if os.path.isfile(sml_conf_file):
+        config.read(sml_conf_file)
+        return config
+    else:
+        config['DEFAULT'] = {'dark_mode': "true"}
+        with open(sml_conf_file, 'w') as config_file:
+            config.write(config_file)
+
+        config.read(sml_conf_file)
+
+        logger.info('sml.conf not found. Configuration file created at ' + sml_conf_file)
+        return config
+
+
+def write_sml_config(content):
+    """
+    Write configurations to ``sml.conf``
+
+    Parameters
+    ----------
+    content: object
+        ConfigParser object
+    """
+    sml_conf_file = os.path.expanduser('~' + os.sep + 'sml.conf')
+
+    if os.path.isfile(sml_conf_file):
+        with open(sml_conf_file, 'w') as config_file:
+            content.write(config_file)
+    else:
+        raise ConfigFileNotFound("Make sure Config file is available at " + sml_conf_file)
+
 ####################################################################
 #                                                                  #
 #                           Exceptions                             #
@@ -409,3 +454,15 @@ class SplitDataException(Exception):
         super(SplitDataException, self).__init__(message)
 
         self.errors = errors
+
+
+class ConfigFileNotFound(Exception):
+    def __init__(self, message, errors=None):
+        super(ConfigFileNotFound, self).__init__(message)
+
+        self.errors = errors
+
+
+if __name__ == '__main__':
+    a = get_sml_conf()
+    print(a['DEFAULT']['dark_mode'])
