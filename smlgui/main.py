@@ -53,6 +53,17 @@ class AboutUi(QtWidgets.QDialog):
         logger.info("Exiting AboutUi.")
 
 
+class PreferenceUi(QtWidgets.QDialog):
+    """
+    Open ``preference`` pane.
+    """
+
+    def __init__(self, parent=None):
+        super(PreferenceUi, self).__init__(parent)
+        uic.loadUi(os.getcwd() + os.sep + 'smlgui' + os.sep + 'gui' + os.sep + 'preference.ui', self)
+        self.setWindowModality(QtCore.Qt.ApplicationModal)
+
+
 class ImportUi(QtWidgets.QMainWindow):
     """
     Imports SML and exports to CSV.
@@ -192,6 +203,7 @@ class Home(QtWidgets.QMainWindow):
         self.import_button.installEventFilter(self)
 
         self.about_menu.triggered.connect(self.show_about)
+        self.preference_menu.triggered.connect(self.show_preference)
         self.exit_menu.triggered.connect(self.close)
 
         self.export_ui = ExportUi()
@@ -207,6 +219,14 @@ class Home(QtWidgets.QMainWindow):
         Opening ``AboutUi``
         """
         app = AboutUi()
+        app.exec_()
+
+    @staticmethod
+    def show_preference():
+        """
+        Opening ``AboutUi``
+        """
+        app = PreferenceUi()
         app.exec_()
 
     def show_export_ui(self):

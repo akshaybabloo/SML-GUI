@@ -105,6 +105,8 @@
     <addaction name="export_to_sml_menu"/>
     <addaction name="import_from_sml_menu"/>
     <addaction name="separator"/>
+    <addaction name="preference_menu"/>
+    <addaction name="separator"/>
     <addaction name="exit_menu"/>
    </widget>
    <addaction name="menuFile"/>
@@ -129,6 +131,11 @@
   <action name="import_from_sml_menu">
    <property name="text">
     <string>Import from SML</string>
+   </property>
+  </action>
+  <action name="preference_menu">
+   <property name="text">
+    <string>Preference</string>
    </property>
   </action>
  </widget>
