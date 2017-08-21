@@ -3,7 +3,12 @@ Utility for pre-processing the file before sending it to ``processor``.
 """
 from __future__ import print_function
 
-import configparser
+try:
+    import configparser as configparser
+except ImportError:
+    import ConfigParser as configparser
+    pass
+
 import csv
 import logging
 import os
@@ -454,6 +459,7 @@ def write_sml_config(content):
             content.write(config_file)
     else:
         raise ConfigFileNotFound("Make sure Config file is available at " + sml_conf_file)
+
 
 ####################################################################
 #                                                                  #
