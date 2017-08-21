@@ -470,7 +470,7 @@ QRadioButton::indicator:hover, QCheckBox::indicator:hover
 
 QCheckBox::indicator:checked
 {
-    image:url(:/images/checkbox.png);
+    image:url(:/qss_icons/rc/checkbox_checked.png);
 }
 
 QCheckBox::indicator:disabled, QRadioButton::indicator:disabled
