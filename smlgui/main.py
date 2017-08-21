@@ -7,10 +7,13 @@ import numpy as np
 from PyQt5 import uic, QtWidgets, QtGui, QtCore
 
 from smlgui import __version__
-from smlgui.utility import select_folder, is_windows, load_stylesheet, loading_effects_decorator
+from smlgui.utility import select_folder, is_windows, load_stylesheet, loading_effects_decorator, get_sml_conf, \
+    write_sml_config
 from smlgui.widgets import TabWidget
 
 logger = logging.getLogger(__name__)
+conf = get_sml_conf()
+dark_mode = QtCore.Qt.Checked if conf['DEFAULT']['dark_mode'] == "true" else QtCore.Qt.Unchecked
 
 
 class AboutUi(QtWidgets.QDialog):
@@ -59,9 +62,37 @@ class PreferenceUi(QtWidgets.QDialog):
     """
 
     def __init__(self, parent=None):
+        global dark_mode
+
         super(PreferenceUi, self).__init__(parent)
         uic.loadUi(os.getcwd() + os.sep + 'smlgui' + os.sep + 'gui' + os.sep + 'preference.ui', self)
         self.setWindowModality(QtCore.Qt.ApplicationModal)
+        self.setWindowIcon(
+            QtGui.QIcon(os.getcwd() + os.sep + 'smlgui' + os.sep + 'gui' + os.sep + 'assets' + os.sep + 'logo.png'))
+
+        self.ok_button.clicked.connect(self.on_ok)
+
+        self.dark_mode_check.setTristate(False)
+        self.dark_mode_check.setCheckState(dark_mode)
+
+    def on_ok(self):
+        """
+        Event for ``Ok` button.
+        """
+        global dark_mode, conf
+
+        if self.dark_mode_check.isChecked():
+            if dark_mode is not QtCore.Qt.Checked:
+                dark_mode = QtCore.Qt.Checked
+            if conf['DEFAULT']['dark_mode'] != "true":
+                conf.set('DEFAULT', 'dark_mode', 'true')
+                write_sml_config(conf)
+                QtWidgets.QMessageBox.warning(self, "SML Maker", "Restart SML Maker to make changes.")
+        else:
+            dark_mode = QtCore.Qt.Unchecked
+            conf.set('DEFAULT', 'dark_mode', 'false')
+            write_sml_config(conf)
+            QtWidgets.QMessageBox.information(self, "SML Maker", "Restart SML Maker to make changes.")
 
 
 class ImportUi(QtWidgets.QMainWindow):
@@ -277,6 +308,7 @@ def main(debug, version):
     version
     debug
     """
+    global conf
 
     if debug:
         logging.basicConfig(level=logging.DEBUG,
@@ -295,5 +327,10 @@ def main(debug, version):
 
     app = QtWidgets.QApplication(sys.argv)
     window = Home()
-    app.setStyleSheet(load_stylesheet())
+
+    if conf['DEFAULT']['dark_mode'] == "true":
+        app.setStyleSheet(load_stylesheet())
+    else:
+        app.setStyleSheet("")
+
     sys.exit(app.exec_())
