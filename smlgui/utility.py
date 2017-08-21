@@ -442,6 +442,8 @@ def write_sml_config(content):
 #                           Exceptions                             #
 #                                                                  #
 ####################################################################
+
+
 class NotEnoughDataError(Exception):
     def __init__(self, message, errors=None):
         super(NotEnoughDataError, self).__init__(message)
