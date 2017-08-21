@@ -214,6 +214,24 @@ class ReadCSV:
         return flow
 
 
+def is_python3():
+    """
+    Check for Python 3
+
+    >>> print(is_python3())
+    True or False
+
+    Returns
+    -------
+    bool: bool
+        True or False
+    """
+    if sys.version_info[:2] >= (3, 5):
+        return True
+    else:
+        return False
+
+
 def atoi(text):
     """
     Checks if the file names contain numbers.
