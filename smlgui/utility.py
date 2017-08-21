@@ -488,7 +488,3 @@ class ConfigFileNotFound(Exception):
 
         self.errors = errors
 
-
-if __name__ == '__main__':
-    a = get_sml_conf()
-    print(a['DEFAULT']['dark_mode'])
