@@ -18,6 +18,7 @@ import sys
 from contextlib import contextmanager
 
 import pandas as pd
+import numpy as np
 from PyQt5 import QtWidgets, QtCore, QtGui
 from sklearn.model_selection import train_test_split
 
@@ -67,26 +68,21 @@ class ReadCSV:
 
         >>> files = ReadCSV()
         >>> files.read_samples()
+        [[[...][...][...]]
+        ...
+        [[...][...][...]]]
 
         Returns
         -------
-        flow  :  DataFrame
+        flow  :  narray
         """
         self.prefixed.sort(key=natural_keys)  # Sorted with filename and sample number
 
         temp = [self.data_folder + self.prefixed for self.prefixed in self.prefixed]
-        data = [pd.read_csv(f, index_col=None, header=None) for f in temp]
+        data = [np.genfromtxt(f, delimiter=",") for f in temp]
+        data = np.asarray(data)
 
-        flow = pd.DataFrame(data)
-
-        temp2 = self._get_class_labels()
-
-        flow = flow.set_index([flow.index, temp2])
-        flow.index = flow.index.set_names('index', level=0)
-        flow.index = flow.index.set_names('class', level=1)
-        pd.set_option('display.expand_frame_repr', False)
-
-        return flow
+        return data
 
     def get_split_data(self, split_to=0.5):
         """Get split data for training and testing.
