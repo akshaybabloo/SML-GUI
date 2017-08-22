@@ -111,13 +111,14 @@ class ImportUi(QtWidgets.QMainWindow):
         self.setWindowIcon(
             QtGui.QIcon(os.getcwd() + os.sep + 'smlgui' + os.sep + 'gui' + os.sep + 'assets' + os.sep + 'logo.png'))
 
+        my_font = QtGui.QFont()
+        my_font.setBold(True)
+        my_font.setPixelSize(50)
+
         # Text before loading the samples
         self.temp_text_table = QtWidgets.QLabel()
         self.temp_text_table.setText("Load SML")
         self.temp_text_table.setAlignment(QtCore.Qt.AlignHCenter | QtCore.Qt.AlignVCenter)
-        my_font = QtGui.QFont()
-        my_font.setBold(True)
-        my_font.setPixelSize(50)
         self.temp_text_table.setFont(my_font)
         self.temp_text_table.setMinimumHeight(150)
         self.temp_text_table.setMinimumWidth(400)
