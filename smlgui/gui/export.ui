@@ -42,6 +42,19 @@
          <item row="0" column="1">
           <layout class="QVBoxLayout" name="verticalLayout_2">
            <item>
+            <widget class="QPushButton" name="load_samples_button">
+             <property name="toolTip">
+              <string comment="test">Loads all samples starting with sam1_*.csv</string>
+             </property>
+             <property name="toolTipDuration">
+              <number>-1</number>
+             </property>
+             <property name="text">
+              <string>Load Samples</string>
+             </property>
+            </widget>
+           </item>
+           <item>
             <widget class="QPushButton" name="load_feature_names">
              <property name="text">
               <string>Load Feature Names</string>
@@ -66,15 +79,9 @@
             </widget>
            </item>
            <item>
-            <widget class="QPushButton" name="load_samples_button">
-             <property name="toolTip">
-              <string comment="test">Loads all samples starting with sam1_*.csv</string>
-             </property>
-             <property name="toolTipDuration">
-              <number>-1</number>
-             </property>
-             <property name="text">
-              <string>Load Samples</string>
+            <widget class="Line" name="line">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
              </property>
             </widget>
            </item>
