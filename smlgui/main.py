@@ -182,10 +182,32 @@ class ExportUi(QtWidgets.QMainWindow):
         self.setWindowIcon(
             QtGui.QIcon(os.getcwd() + os.sep + 'smlgui' + os.sep + 'gui' + os.sep + 'assets' + os.sep + 'logo.png'))
 
+        my_font = QtGui.QFont()
+        my_font.setBold(True)
+        my_font.setPixelSize(50)
+
+        # Text before loading the samples
+        self.temp_text_table = QtWidgets.QLabel()
+        self.temp_text_table.setText("Load Files")
+        self.temp_text_table.setAlignment(QtCore.Qt.AlignHCenter | QtCore.Qt.AlignVCenter)
+        self.temp_text_table.setFont(my_font)
+        self.temp_text_table.setMinimumHeight(150)
+        self.temp_text_table.setMinimumWidth(400)
+
+        # Text before loading the samples
+        self.temp_text_stats = QtWidgets.QLabel()
+        self.temp_text_stats.setText("Load Files")
+        self.temp_text_stats.setAlignment(QtCore.Qt.AlignHCenter | QtCore.Qt.AlignVCenter)
+        self.temp_text_stats.setFont(my_font)
+        self.temp_text_stats.setMinimumHeight(150)
+        self.temp_text_stats.setMinimumWidth(500)
+
         # Connections and events
         self.load_samples_button.clicked.connect(select_folder)
         self.load_samples_button.installEventFilter(self)
 
+        self.stats_layout.addWidget(self.temp_text_stats)
+        self.table_layout.addWidget(self.temp_text_table)
         self.about_menu.triggered.connect(self.show_about)
 
         logger.info("Main GUI started")
