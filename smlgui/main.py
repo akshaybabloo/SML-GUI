@@ -8,7 +8,7 @@ from PyQt5 import uic, QtWidgets, QtGui, QtCore
 
 from smlgui import __version__
 from smlgui.utility import select_folder, is_windows, load_stylesheet, loading_effects_decorator, get_sml_conf, \
-    write_sml_config
+    write_sml_config, loading_effects_context, ReadCSV
 from smlgui.widgets import TabWidget
 
 logger = logging.getLogger(__name__)
@@ -203,7 +203,7 @@ class ExportUi(QtWidgets.QMainWindow):
         self.temp_text_stats.setMinimumWidth(500)
 
         # Connections and events
-        self.load_samples_button.clicked.connect(select_folder)
+        self.load_samples_button.clicked.connect(self.load_table)
         self.load_samples_button.installEventFilter(self)
 
         self.stats_layout.addWidget(self.temp_text_stats)
@@ -211,6 +211,18 @@ class ExportUi(QtWidgets.QMainWindow):
         self.about_menu.triggered.connect(self.show_about)
 
         logger.info("Main GUI started")
+
+    def load_table(self):
+        """
+        Populates the ``samples`` table.
+        """
+        location = select_folder()
+        read_csv = ReadCSV(location)
+
+        with loading_effects_context():
+            self.temp_text_table.deleteLater()
+            table_widget = TabWidget(read_csv.read_samples())
+            self.table_layout.addWidget(table_widget)
 
     @staticmethod
     def show_about():
@@ -233,6 +245,7 @@ class ExportUi(QtWidgets.QMainWindow):
 
     def closeEvent(self, a0: QtGui.QCloseEvent):
         logger.info("Exiting ExportUi")
+        self.setAttribute(QtCore.Qt.WA_DeleteOnClose)
 
 
 class Home(QtWidgets.QMainWindow):
