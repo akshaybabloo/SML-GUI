@@ -9,29 +9,29 @@ class TabWidget(QtWidgets.QTabWidget):
     """
     Table widget to populate all the samples.
     """
-    def __init__(self, narray, parent=None):
+    def __init__(self, n_array, parent=None):
         super(TabWidget, self).__init__(parent)
 
-        tablist = []
+        tab_list = []
         layoutlist = []
-        self.tablelist = []
+        self.table_list = []
         self.setMinimumHeight(150)
         self.setMinimumWidth(400)
 
-        num_tab_widgets = narray.shape[0]
+        num_tab_widgets = n_array.shape[0]
 
         for i in range(num_tab_widgets):
-            tablist.append(QtWidgets.QWidget())
-            self.addTab(tablist[i], str('Sample %s' % i))
-            self.tablelist.append(QtWidgets.QTableView())
-            setattr(self, 'Table%d' % i, self.tablelist[i])
+            tab_list.append(QtWidgets.QWidget())
+            self.addTab(tab_list[i], str('Sample %s' % i))
+            self.table_list.append(QtWidgets.QTableView())
+            setattr(self, 'Table%d' % i, self.table_list[i])
             layoutlist.append(QtWidgets.QVBoxLayout())
 
-            model = NumpyModel(narray[i])
-            self.tablelist[i].setModel(model)
+            model = NumpyModel(n_array[i])
+            self.table_list[i].setModel(model)
 
-            layoutlist[i].addWidget(self.tablelist[i])
-            tablist[i].setLayout(layoutlist[i])
+            layoutlist[i].addWidget(self.table_list[i])
+            tab_list[i].setLayout(layoutlist[i])
 
 
 class NumpyModel(QtCore.QAbstractTableModel):
@@ -39,9 +39,9 @@ class NumpyModel(QtCore.QAbstractTableModel):
     Adds 2D numpy array to the ``QTableView``
     """
 
-    def __init__(self, narray, headers=None, parent=None):
+    def __init__(self, n_array, headers=None, parent=None):
         QtCore.QAbstractTableModel.__init__(self, parent)
-        self._array = narray
+        self._array = n_array
 
         if headers is not None:
             self.header_labels = headers
