@@ -9,14 +9,14 @@ from PyQt5 import uic, QtWidgets, QtGui, QtCore
 from smlgui import __version__
 from smlgui.utility import select_folder, is_windows, load_stylesheet, loading_effects_decorator, get_sml_conf, \
     write_sml_config, loading_effects_context, ReadCSV
-from smlgui.widgets import TabWidget
+from smlgui.widgets import TabWidget, CustomQMainWidget, CustomQDialog
 
 logger = logging.getLogger(__name__)
 conf = get_sml_conf()
 dark_mode = QtCore.Qt.Checked if conf['DEFAULT']['dark_mode'] == "true" else QtCore.Qt.Unchecked
 
 
-class AboutUi(QtWidgets.QDialog):
+class AboutUi(CustomQDialog):
     """
     Open's ``AboutUi`` GUI.
     """
@@ -56,7 +56,7 @@ class AboutUi(QtWidgets.QDialog):
         logger.info("Exiting AboutUi.")
 
 
-class PreferenceUi(QtWidgets.QDialog):
+class PreferenceUi(CustomQDialog):
     """
     Open ``preference`` pane.
     """
@@ -95,7 +95,7 @@ class PreferenceUi(QtWidgets.QDialog):
             QtWidgets.QMessageBox.information(self, "SML Maker", "Restart SML Maker to make changes.")
 
 
-class ImportUi(QtWidgets.QMainWindow):
+class ImportUi(CustomQMainWidget):
     """
     Imports SML and exports to CSV.
     """
@@ -167,7 +167,7 @@ class ImportUi(QtWidgets.QMainWindow):
         self.setAttribute(QtCore.Qt.WA_DeleteOnClose)
 
 
-class ExportUi(QtWidgets.QMainWindow):
+class ExportUi(CustomQMainWidget):
     """
     Main class that loads and runs the ``export.ui``.
     """
@@ -224,7 +224,7 @@ class ExportUi(QtWidgets.QMainWindow):
                 self.temp_text_table.deleteLater()
             except Exception:
                 pass
-            
+
             # Remove if QTabWidget already exists.
             for a in range(self.table_layout.count()):
                 if isinstance(self.table_layout.itemAt(a).widget(), QtWidgets.QTabWidget):
@@ -257,7 +257,7 @@ class ExportUi(QtWidgets.QMainWindow):
         self.setAttribute(QtCore.Qt.WA_DeleteOnClose)
 
 
-class Home(QtWidgets.QMainWindow):
+class Home(CustomQMainWidget):
     """
     Main class that loads and runs the ``main.ui``.
     """

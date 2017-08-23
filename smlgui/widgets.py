@@ -66,3 +66,21 @@ class NumpyModel(QtCore.QAbstractTableModel):
         if role == QtCore.Qt.DisplayRole and orientation == QtCore.Qt.Horizontal:
             return self.header_labels[section]
         return QtCore.QAbstractTableModel.headerData(self, section, orientation, role)
+
+
+class CustomQMainWidget(QtWidgets.QMainWindow):
+    """
+    Custom ``QMainWidget``, that will (in future) implement frameless window.
+    """
+    def __init__(self, *args):
+        super(CustomQMainWidget, self).__init__(*args)
+        pass
+
+
+class CustomQDialog(QtWidgets.QDialog):
+    """
+    Custom ``QDialog``, that will (in future) implement frameless window.
+    """
+    def __init__(self, *args):
+        super(CustomQDialog, self).__init__(*args)
+        pass
