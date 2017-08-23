@@ -13,7 +13,7 @@ from smlgui.widgets import TabWidget, CustomQMainWidget, CustomQDialog
 
 logger = logging.getLogger(__name__)
 conf = get_sml_conf()
-dark_mode = QtCore.Qt.Checked if conf['DEFAULT']['dark_mode'] == "true" else QtCore.Qt.Unchecked
+dark_mode_check = QtCore.Qt.Checked if conf['DEFAULT']['dark_mode'] == "true" else QtCore.Qt.Unchecked
 
 
 class AboutUi(CustomQDialog):
@@ -62,7 +62,7 @@ class PreferenceUi(CustomQDialog):
     """
 
     def __init__(self, parent=None):
-        global dark_mode
+        global dark_mode_check
 
         super(PreferenceUi, self).__init__(parent)
         uic.loadUi(os.getcwd() + os.sep + 'smlgui' + os.sep + 'gui' + os.sep + 'preference.ui', self)
@@ -73,23 +73,23 @@ class PreferenceUi(CustomQDialog):
         self.ok_button.clicked.connect(self.on_ok)
 
         self.dark_mode_check.setTristate(False)
-        self.dark_mode_check.setCheckState(dark_mode)
+        self.dark_mode_check.setCheckState(dark_mode_check)
 
     def on_ok(self):
         """
         Event for ``Ok` button.
         """
-        global dark_mode, conf
+        global dark_mode_check, conf
 
         if self.dark_mode_check.isChecked():
-            if dark_mode is not QtCore.Qt.Checked:
-                dark_mode = QtCore.Qt.Checked
+            if dark_mode_check is not QtCore.Qt.Checked:
+                dark_mode_check = QtCore.Qt.Checked
             if conf['DEFAULT']['dark_mode'] != "true":
                 conf.set('DEFAULT', 'dark_mode', 'true')
                 write_sml_config(conf)
                 QtWidgets.QMessageBox.warning(self, "SML Maker", "Restart SML Maker to make changes.")
         else:
-            dark_mode = QtCore.Qt.Unchecked
+            dark_mode_check = QtCore.Qt.Unchecked
             conf.set('DEFAULT', 'dark_mode', 'false')
             write_sml_config(conf)
             QtWidgets.QMessageBox.information(self, "SML Maker", "Restart SML Maker to make changes.")
