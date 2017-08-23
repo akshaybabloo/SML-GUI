@@ -8,6 +8,8 @@ from smlgui import __version__
 from smlgui.ui import HomeUi
 from smlgui.utility import is_windows, load_stylesheet, get_sml_conf
 
+__all__ = ['main']
+
 conf = get_sml_conf()
 
 

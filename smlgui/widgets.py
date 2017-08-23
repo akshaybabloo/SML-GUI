@@ -4,6 +4,8 @@ Custom widgets for the GUI
 
 from PyQt5 import QtWidgets, QtCore
 
+__all__ = ['TabWidget', 'CustomQDialog', 'CustomQMainWidget']
+
 
 class TabWidget(QtWidgets.QTabWidget):
     """

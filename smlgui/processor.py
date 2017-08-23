@@ -5,6 +5,8 @@ import logging
 
 logger = logging.getLogger(__name__)
 
+__all__ = ['check_files']
+
 
 def check_files(location):
     """

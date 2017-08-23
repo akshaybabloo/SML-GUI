@@ -17,7 +17,6 @@ import re
 import sys
 from contextlib import contextmanager
 
-import pandas as pd
 import numpy as np
 from PyQt5 import QtWidgets, QtCore, QtGui
 from sklearn.model_selection import train_test_split
@@ -26,7 +25,8 @@ from smlgui.processor import check_files
 
 logger = logging.getLogger(__name__)
 
-__all__ = ['ReadCSV', 'ReadJSON']
+__all__ = ['ReadCSV', 'is_windows', 'is_linux', 'is_mac', 'is_python3', 'select_folder', 'load_stylesheet',
+           'loading_effects_context', 'loading_effects_decorator', 'get_sml_conf', 'write_sml_config']
 
 
 class ReadCSV:
@@ -483,4 +483,3 @@ class ConfigFileNotFound(Exception):
         super(ConfigFileNotFound, self).__init__(message)
 
         self.errors = errors
-
