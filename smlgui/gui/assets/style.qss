@@ -339,18 +339,16 @@ QToolBar {
     background: 1px solid #6c6c6c;
     font-weight: bold;
 }
-
-QToolBar::handle:horizontal {
-    image: url(:/qss_icons/rc/Hmovetoolbar.png);
-}
-QToolBar::handle:vertical {
-    image: url(:/qss_icons/rc/Vmovetoolbar.png);
-}
 QToolBar::separator:horizontal {
     image: url(:/qss_icons/rc/Hsepartoolbar.png);
 }
 QToolBar::separator:vertical {
     image: url(:/qss_icons/rc/Vsepartoolbar.png);
+}
+QToolBar::handle
+{
+     spacing: 3px; /* spacing between items in the tool bar */
+     background: url(:/qss_icons/rc/handle.png);
 }
 
 QMenu::separator

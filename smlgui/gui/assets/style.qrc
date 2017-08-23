@@ -2,11 +2,10 @@
   <qresource prefix="qss_icons">
     <file>rc/down_arrow.png</file>
     <file>rc/down_arrow_disabled.png</file>
-    <file>rc/Hmovetoolbar.png</file>
     <file>rc/Hsepartoolbar.png</file>
-    <file>rc/Vmovetoolbar.png</file>
     <file>rc/Vsepartoolbar.png</file>
     <file>rc/checkbox_checked.png</file>
+    <file>rc/handle.png</file>
   </qresource>
   <qresource prefix="darkstyle">
       <file>style.qss</file>
