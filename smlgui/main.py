@@ -16,12 +16,14 @@ conf = get_sml_conf()
 @click.option('--version', '-v', is_flag=True, help="Show the version number.")
 def main(debug, version):
     """
-    Runs the main app, if ``--debug=1`` a more verbose logging is shown.
+    Runs the main app. If ``--debug`` flag is added, the app runs in debug mode.
 
     Parameters
     ----------
-    version
-    debug
+    version: bool
+        Defaults to True.
+    debug: bool
+        Defaults to False.
     """
     global conf
 
