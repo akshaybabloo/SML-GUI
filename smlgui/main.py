@@ -220,7 +220,16 @@ class ExportUi(QtWidgets.QMainWindow):
         read_csv = ReadCSV(location)
 
         with loading_effects_context():
-            self.temp_text_table.deleteLater()
+            try:
+                self.temp_text_table.deleteLater()
+            except Exception:
+                pass
+            
+            # Remove if QTabWidget already exists.
+            for a in range(self.table_layout.count()):
+                if isinstance(self.table_layout.itemAt(a).widget(), QtWidgets.QTabWidget):
+                    self.table_layout.itemAt(a).widget().deleteLater()
+
             table_widget = TabWidget(read_csv.read_samples())
             self.table_layout.addWidget(table_widget)
 
@@ -255,6 +264,7 @@ class Home(QtWidgets.QMainWindow):
 
     def __init__(self, parent=None):
         super(Home, self).__init__(parent)
+        # self.setWindowFlags(QtCore.Qt.FramelessWindowHint | QtCore.Qt.WindowSystemMenuHint)  # Frameless window
         uic.loadUi(os.getcwd() + os.sep + 'smlgui' + os.sep + 'gui' + os.sep + 'home.ui', self)
         self.status_message = "Welcome to SML Maker!"
 
