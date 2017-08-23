@@ -255,13 +255,13 @@ class ExportUi(CustomQMainWidget):
         self.setAttribute(QtCore.Qt.WA_DeleteOnClose)
 
 
-class Home(CustomQMainWidget):
+class HomeUi(CustomQMainWidget):
     """
     Main class that loads and runs the ``main.ui``.
     """
 
     def __init__(self, parent=None):
-        super(Home, self).__init__(parent)
+        super(HomeUi, self).__init__(parent)
         # self.setWindowFlags(QtCore.Qt.FramelessWindowHint | QtCore.Qt.WindowSystemMenuHint)  # Frameless window
         uic.loadUi(os.getcwd() + os.sep + 'smlgui' + os.sep + 'gui' + os.sep + 'home.ui', self)
         self.status_message = "Welcome to SML Maker!"
@@ -284,7 +284,7 @@ class Home(CustomQMainWidget):
         self.export_ui = ExportUi()
         self.import_ui = ImportUi()
 
-        logger.info("Home GUI started")
+        logger.info("HomeUi GUI started")
         # showing the app gui to user
         self.show()
 

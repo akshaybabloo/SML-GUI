@@ -5,7 +5,7 @@ import click
 from PyQt5 import QtWidgets
 
 from smlgui import __version__
-from smlgui.ui import Home
+from smlgui.ui import HomeUi
 from smlgui.utility import is_windows, load_stylesheet, get_sml_conf
 
 conf = get_sml_conf()
@@ -43,7 +43,7 @@ def main(debug, version):
         ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID(my_app_id)
 
     app = QtWidgets.QApplication(sys.argv)
-    window = Home()
+    window = HomeUi()
 
     if conf['DEFAULT']['dark_mode'] == "true":
         app.setStyleSheet(load_stylesheet())
