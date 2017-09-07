@@ -1,3 +1,6 @@
+"""
+Start here.
+"""
 import logging
 import sys
 

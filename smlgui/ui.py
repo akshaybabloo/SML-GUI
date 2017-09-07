@@ -1,3 +1,6 @@
+"""
+UI class to control the visibility, usability and control of GUI.
+"""
 import logging
 import os
 
