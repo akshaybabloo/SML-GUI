@@ -203,3 +203,5 @@ _build
 .tox
 try.py
 /temp/
+
+test\.py
