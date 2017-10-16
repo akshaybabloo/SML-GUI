@@ -1,5 +1,5 @@
 #!/bin/sh
-if [-d "~/anaconda3"]; then
+if test -d ~/anaconda3; then
     echo "Anaconda 3 available. Activating root environment."
     source activate root
     echo "Running SML GUI."
