@@ -1,6 +1,22 @@
+import os
+
 from setuptools import setup, find_packages  # noqa, analysis:ignore
 
 from smlgui import __version__
+
+base_dir = os.path.dirname(__file__)
+
+try:
+    import pypandoc
+
+    long_description = pypandoc.convert('README.md', 'rst')
+    long_description = long_description.replace("\r", "")  # Do not forget this line
+except OSError:
+    print("Pandoc not found. Long_description conversion failure.")
+    import io
+    # pandoc is not installed, fallback to using raw contents
+    with io.open('README.md', encoding="utf-8") as f:
+        long_description = f.read()
 
 setup(
     name='smlgui',
@@ -11,6 +27,7 @@ setup(
     author='Akshay Raj Gollahalli',
     author_email='akshay@gollahalli.com',
     description='Data exporter for Spikes Markup Language (SML).',
+    long_description=long_description,
     install_requires=['click', 'pyqt>=5.6', 'numpy>=1.10', 'pandas>=0.18', 'scikit-learn>=0.17'],
     scripts=['sml.sh', 'sml.cmd'],
     package_data={'smlgui': ['*.ui', '*.png']},
